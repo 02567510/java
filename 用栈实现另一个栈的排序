@@ -19,12 +19,16 @@ public class sortStackByStack {
 
     }
     public static void main(String[] args) {
+        //定义变量
         Stack<Integer> stack=new Stack<Integer>();
         int a[]={1,4,3,5,2};
+        //初始化
         for(int i=0;i<5;i++){
             stack.push(a[i]);
         }
+        //处理数据
         sortStackByStack(stack);
+        //打印
         while(!stack.isEmpty()){
             System.out.print(stack.pop()+" ");
         }
