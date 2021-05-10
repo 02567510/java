@@ -1,0 +1,32 @@
+package sortStackByStack;
+import java.util.Stack;
+public class sortStackByStack {
+    public static void sortStackByStack(Stack<Integer> stack){
+        //定义辅助栈变量
+        Stack<Integer> help=new Stack<Integer>();
+        while(!stack.isEmpty()){//判断待处理数据是否存在
+            int cur=stack.pop();//弹出stack栈顶元素并赋值给cur
+            //保持help 每次 入栈元素 比 上一次 入栈 元素小
+            while(!help.isEmpty() && help.peek()<cur){
+                stack.push(help.pop());
+            }
+            help.push(cur);
+        }
+        //把排序倒回去
+        while(!help.isEmpty()){
+            stack.push(help.pop());
+        }
+
+    }
+    public static void main(String[] args) {
+        Stack<Integer> stack=new Stack<Integer>();
+        int a[]={1,4,3,5,2};
+        for(int i=0;i<5;i++){
+            stack.push(a[i]);
+        }
+        sortStackByStack(stack);
+        while(!stack.isEmpty()){
+            System.out.print(stack.pop()+" ");
+        }
+    }
+}
