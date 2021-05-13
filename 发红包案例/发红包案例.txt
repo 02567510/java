@@ -1,0 +1,58 @@
+这个案例运用了：
+类class；继承extends；类成员变量和方法和get和set成员变量方法；
+调用有参构造方法并用super访问父类变量；
+for循环；
+方法有返回值和无返回值使用；方法参数和无参数的使用；
+数组集合ArrayList<>；数组集合作为参数和返回值使用；产生随机数；获取，添加数组集合内容 ;
+打印
+
+
+用户类
+User{
+	成员变量：
+		姓名  name
+		当前余额 money
+	成员方法
+		无参构造方法
+		有参构造方法
+		get and set
+		用于显示当前用户多少余额的方法show()
+}
+
+//群主的类  继承 用户类
+Manager extends User{
+	调用有参构造函数：用 super 初始化继承于父类的成员变量
+	 /*发红包 
+	    返回值：ArrayList<Integer> 返回一个存储红包数组集合
+                    方法名：sent
+	    参数列表：总共发多少钱(int)   多少个(int)*/
+	public ArrayList<Integer> sent(int totalMoney,int count){
+		 1-定义一个集合，用来存储红包
+		2-查看群主有多少余额
+		     if(发多少钱>余额)返回一个空集合
+		3-扣钱，从新设置群主余额
+		4-准备发红包，设置红包集合参数
+		<1>获取每个红包平均后所获得的钱数
+		<2>获取零头
+		5-开始发红包，将红包添加到集合,把除了最后一个红包，全部赋上平均值
+			for(范围：多少个count)
+		6-把零头放到最后一个红包里
+		7-返回红包数组集合	
+	 }
+}
+
+
+//普通成员类 继承 用户类
+Member extends User{
+	1、调用有参构造函数：用 super 初始化继承于父类的成员变量
+	2、/*收红包方法
+	        返回值：不需要返回任何数据，只负责接受用 void
+	         方法名：receive
+                        参数列表：需要接受一个红包集合且为整数，用 ArrayList<Integer>*/
+              public void receive(ArrayList<Integer> redList){
+		<1>、产生一个随机数，获取红包集合内的索引值：范围：redList.size()
+		<2>、根据索引，从红包集合获取红包：redList.remove()
+		<3>、把红包赋值给自己super.setMoney(原来的+从红包获取的)
+	}
+
+}
